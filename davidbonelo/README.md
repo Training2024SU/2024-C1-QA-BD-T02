@@ -1,6 +1,6 @@
 # Solución taller #2 MR Parque Norte
 
-1. Verificar el modelo entidad relación realizado en la actividad anterior.
+## 1. Verificar el modelo entidad relación realizado en la actividad anterior.
 
 Actualizo el modelo entidad relación para volverlo extendido y documentarlo para consulta de personal no técnico.
 
@@ -15,25 +15,26 @@ Actualizo el modelo entidad relación para volverlo extendido y documentarlo par
    - Edad (Derivado)
    - Nombre_Completo (Compuesto de: Nombres, Apellidos)
    - Correo (multivaluado)
-2. **Brazalete (Entidad Fuerte)**
+2. **Brazalete**
    - ID (Llave)
    - Clase
    - Precio
-   - Límite_Usos
-3. **Brazalete_Unidad (Entidad Debil)**
+   - Límite_Usos (Nullable)
+3. **Brazalete_Unidad (Entidad Debil sin ID y dependiente de Brazalete)**
    - Número (Discriminador)
    - Valido_Hasta
    - Fecha_Usado
-   - Cantidad_Usos
+   - Cantidad_Usos (Default: 0)
 4. **Atracción**
    - ID (Llave)
+   - Nombre
    - Estado
    - Categoria
    - Precio_Uso
    - Precio_Compra
-   - Altura_Min
-   - Altura_Max
-   - Edad_Min
+   - Altura_Min (Nullable)
+   - Altura_Max (Nullable)
+   - Edad_Min (Nullable)
    - Intensidad
 5. **Proveedor**
    - ID (Llave)
@@ -65,7 +66,7 @@ Actualizo el modelo entidad relación para volverlo extendido y documentarlo par
 #### Uno a Muchos
 
 - Un cliente puede **comprar muchas** unidades de brazalete, pero una unidad de brazalete puede **ser comprada por solo un** cliente. Los clientes pueden **no comprar** unidades de brazaletes y una unidad de brazalete **tiene que ser comprado por un** cliente.
-- Un brazalete puede **generar muchas** unidades y una unidad puede **ser generada de solo un** brazalete. Un brazalete **debe tener** unidades, y las unidades **tienen que ser generadas de un** brazalete.
+- Un brazalete puede **generar muchas** unidades y una unidad puede **ser generada de solo un** brazalete. Un brazalete **debe tener** unidades, y las unidades **tienen que ser generadas de un** brazalete. Esta es una relación identificadora lo que significa que la llave primaria se compone del ID del brazalete y el discriminador Número de la unidad
 - Un proveedor puede **vender muchas** atracciones y una atracción puede **ser vendida por solo un** proveedor. Un proveedor **debe haber vendido una** atracción y una atracción puede **no haber sido vendida** por un proveedor.
 - Una atracción puede **ser reparada con muchas** ordenes de servicio y una orden de servicio **solo puede ser para reparar una** atracción. Una atracción no necesita tener una orden de servicio, mientras que una orden de servicio **debe ser para reparar una** atracción.
 - Un tecnico puede **completar muchas** ordenes de servicio y una orden de servicio puede **ser completada por solo un** técnico. Un técnico **debe haber completado una** orden de servicio, mientras que una orden puede **no ser completada por un** técnico (suponiendo que se cancele la orden, o no hay técnicos disponibles).
@@ -73,3 +74,18 @@ Actualizo el modelo entidad relación para volverlo extendido y documentarlo par
 #### Uno a Uno
 
 - Un operador puede **operar solo una** atracción y una atracción puede **ser operada por solo un** operador. Un operador **tiene que operar una** atracción, mientras que una atracción puede **no ser operada por un** operador.
+
+## 2. Transformar el modelo E-R en un M-R.
+
+- Transformé todas las entidades en tablas con sus atributos, exceptuando los derivados y multivaluados. Para la super entidad Empleado, como su generalización es total con disyunción, solo tuve que crear las tablas de las subentidades Técnico y Operador, cada una incluyendo todos los atributos de la superclase.
+- Creé las tablas intermedias de las relaciones muchos a muchos, las cuales tienen como llave primaria la concatenación de las llaves primarias de las entidades relacionadas.
+  - Cliente-Atraccion
+  - Brazalete-Atraccion
+- Para las relaciones uno a muchos, la _entidad de muchos_ le agregué como atributo la llave primaria de la _entidad de uno_ con la que se relaciona
+  - Unidad_Brazalete-Cliente
+  - Unidad_Brazalete-Brazalete
+  - Atraccion-Proveedor
+  - Orden_Servicio-Atraccion
+  - Orden_Servicio-Tecnico
+- Para la relación uno a uno analicé la participación, como el operador tiene una participación total en la relación su llave primaria pasa como atributo a la tabla de Atracciónes y no es necesario una tabla intermedia.
+  - Atraccion-Operador
