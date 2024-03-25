@@ -121,3 +121,7 @@ Al revisar el modelo en el punto 1 del taller cambié la entidad Brazalete separ
 - (Orden_Servicio) Estado
 - (Tecnico) Especialidad
 - (Proveedor) Tipo
+
+## 4. Tablas con mínimo 1 registro de ejemplo
+
+[Tablas de ejempplo](./example_tables.md)
