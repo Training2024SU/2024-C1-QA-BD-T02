@@ -122,6 +122,10 @@ Al revisar el modelo en el punto 1 del taller cambié la entidad Brazalete separ
 - (Tecnico) Especialidad
 - (Proveedor) Tipo
 
+## Modelo Relacional Final
+
+![MR](./Parque_MR.png)
+
 ## 4. Tablas con mínimo 1 registro de ejemplo
 
 [Tablas de ejempplo](./example_tables.md)
