@@ -89,3 +89,35 @@ Actualizo el modelo entidad relación para volverlo extendido y documentarlo par
   - Orden_Servicio-Tecnico
 - Para la relación uno a uno analicé la participación, como el operador tiene una participación total en la relación su llave primaria pasa como atributo a la tabla de Atracciónes y no es necesario una tabla intermedia.
   - Atraccion-Operador
+
+## 3. Normalizar el modelo.
+
+Al revisar el modelo en el punto 1 del taller cambié la entidad Brazalete separando los atributos específicos de cada unidad de brazalete a una nueva entidad llamada Unidad_Brazalete. Además de esta forma optimizo la relacion entre los brazaletes y las atracciones que incluye cada una de las unidades. Ahora en lugar de tener registradas todas las atracciones incluidas por cada unidad de brazalete, esta relación se especifica solo entre los tipos de brazalete y las atracciones.
+
+### Un esquema relacional R está en 1NF si:
+
+- [x] Todos los atributos tienen valores atómicos.
+- [x] No hay atributos multivaluados.
+- [x] No deben existir registros duplicados.
+- [x] Las columnas repetidas deben eliminarse y colocarse agrupadas en tablas separadas bajo un contexto.
+- [x] Definir clave principal.
+
+### Un esquema relacional R está en 2NF si:
+
+- [x] Estar en 1FN
+- [x] Todos los valores de las columnas deben depender únicamente de la llave primaria de la tabla.
+- [x] Las tablas deben tener una única llave primaria que identifique a la tabla y que sus atributos dependen de ella.
+
+### Un esquema relacional R está en 3NF si:
+
+- [x] Estar en 2FN.
+- [x] Cada atributo que no está incluido en la clave primaria no depende transitivamente de la clave primaria
+
+#### Otras posibles transofrmaciones sugeribles según los últimos niveles de normalización puede ser separar los siguientes atributos en otras tablas:
+
+- (Atraccion) Estado
+- (Atraccion) Categoría
+- (Atraccion) Intensidad
+- (Orden_Servicio) Estado
+- (Tecnico) Especialidad
+- (Proveedor) Tipo
