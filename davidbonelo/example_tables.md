@@ -1,9 +1,9 @@
 ### Cliente:
 
-| ID  | Estatura | Fecha_Nacimiento | Edad | Nombres | Apellidos |
-| --- | -------- | ---------------- | ---- | ------- | --------- |
-| 1   | 170      | 1990-05-15       | 34   | Juan    | Pérez     |
-| 2   | 165      | 1985-12-28       | 39   | María   | García    |
+| ID  | Estatura | Fecha_Nacimiento | Nombres | Apellidos |
+| --- | -------- | ---------------- | ------- | --------- |
+| 1   | 170      | 1990-05-15       | Juan    | Pérez     |
+| 2   | 165      | 1985-12-28       | María   | García    |
 
 ### Correos_Clientes:
 
